@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(function() {
+    $('.flash_notice').delay(1000).fadeIn('normal', function() {
+        $(this).delay(2000).fadeOut();
+    });
+    $('.alert-success').delay(1000).fadeIn('normal', function() {
+        $(this).delay(2000).fadeOut();
+    });
+});
