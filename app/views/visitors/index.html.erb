@@ -7,8 +7,8 @@
 
 
 <% else %>
-      <div class="col-md-4">
-        <img src="/assets/cathy_statue.jpg" class="cathy_statue"><br/>
+      <div class="col-md-4">    <%= asset_path('logo.png') %>
+        <img src=<%= asset_path("cathy_statue.jpg") %> class="cathy_statue"><br/>
         <div class="well">
           <h3>Log In For Access...</h3>
           <%= render "/devise/sessions/login_form" %>
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <img src="/assets/dastardly.jpg" ><br/>
+        <img src=<%= asset_path("dastardly.jpg") %> ><br/>
       </div>
 
 
