@@ -18,6 +18,7 @@ gem 'devise'
 gem "letter_opener", :group => :development
 
 gem 'rails_12factor', group: :production
+#gem 'annotate'
 
 group :development do
   gem 'better_errors'

@@ -8,11 +8,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
       <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Admin', "#", class: 'navbar-brand', title: 'sub menu with admin stuff on it' %>
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'navbar-brand pull-right' %>
+
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
+      <ul>
+        <li>
+          logout
+        </li>
       </ul>
     </div>
   </div>
