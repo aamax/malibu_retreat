@@ -62,6 +62,12 @@ namespace :db_loader do
       puts "Preparing to save user:\n #{user.inspect}."
       user.save!
       puts "\nUser #{user.name} saved...\n\n"
+      
+      if (user.email == 'aamax@xmission.com') || (user.email == 'judithsacco@sbcglobal.net') || 
+        (user.email == 'megaverett@gmail.com') || (user.email == 'caj@sti.net')
+        user.add_role :admin
+        puts "=========>  User #{user.name} set as admin user... **********"
+      end
     end
   end
 end

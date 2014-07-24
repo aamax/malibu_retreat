@@ -1,6 +1,7 @@
 <h1>Malibu Campers List</h1>
-
-<%= link_to 'New User', new_user_path, class: 'btn btn-success btn-xs' %><br/>
+<% if !current_user.nil? && current_user.has_role?(:admin) %>
+	<%= link_to 'New User', new_user_path, class: 'btn btn-success btn-xs' %><br/>
+<% end %>
 
 <table class="table table-striped">
   <thead>
@@ -9,7 +10,6 @@
       <th>Email</th>
       <th>Address</th>
       <th>Phone</th>
-
       <th>ADMIN</th>
     </tr>
   </thead>
@@ -34,9 +34,12 @@
           Fax: <%= user.fax %>
         </td>
         <td>
-          <%= link_to 'Show', user, class: 'btn btn-primary btn-xs user_btn' %> <br/>
-          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info btn-xs user_btn' %> <br/>
-          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs user_btn' %>
+		  <% if !current_user.nil? && current_user.has_role?(:admin) %>	
+	          <%= link_to 'Show', user, class: 'btn btn-primary btn-xs user_btn' %> <br/>
+	          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info btn-xs user_btn' %> <br/>
+	          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs user_btn' %> <br/>
+			  <%= "Last IN: #{user.last_sign_in_at}"%>
+		  <% end %>
         </td>
       </tr>
     <% end %>
