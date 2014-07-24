@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+
 ruby '2.1.0'
+
 gem 'rails', '4.1.4'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -12,13 +14,16 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'high_voltage'
-
+gem 'rails_12factor'#, group: :production
 gem 'devise'
 
 gem "letter_opener", :group => :development
 
-gem 'rails_12factor', group: :production
+
 #gem 'annotate'
+
+gem "rolify"
+
 
 group :development do
   gem 'better_errors'

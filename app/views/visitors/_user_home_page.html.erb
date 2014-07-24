@@ -1,47 +1,4 @@
-<nav class="navbar navbar-inverse">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
 
-        <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="pull-left nav navbar-nav">
-          <li>
-            <%= link_to 'Admin', "#", title: 'sub menu with admin stuff on it' %>
-          </li>
-          <li>
-            <%= link_to 'Gallery', "#", title: 'Picture Gallery' %>
-          </li>
-
-          <li>
-            <%= link_to "Drop Down", "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown' %>
-            <ul class="dropdown-menu" role="menu">
-              <li> item 1 </li>
-              <li> item 2 </li>
-            </ul>
-          </li>
-
-          <li class="pull-right">
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-          </li>
-          <li class="pull-right">
-            <%= link_to current_user.name, edit_user_path(current_user.id), title: 'modify user profile' %>
-          </li>
-
-        </ul>
-
-      </div>
-    </div>
-  </div>
-</nav>
 
 <div class="row">
   <div class="col-md-6">
@@ -54,6 +11,16 @@
   </div>
 
   <div class="col-md-6">
-    message section
-  </div>
+    Messages Section <br/>
+    <br/>
+
+    <div class="well">
+      <h4>Schedules & Flyers</h4>
+      <ul>
+        <li><a href="/docs/2015_flyer.pdf">2015 Retreat Flyer</a></li>
+        <li><a href="http://www.inlight.com/public_html/CONTENTS/TWSCHEDU.HTM">Fr. Tom's Schedule</a></li>
+        <li><a href="#">Fr. Jim's Schedule</a></li>
+      </ul>
+
+    </div>
 </div>

@@ -45,5 +45,8 @@
   <%= @user.fax %>
 </p>
 
+<p><strong>Last Sign in At:</strong>
+	<%= @user.last_sign_in_at %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

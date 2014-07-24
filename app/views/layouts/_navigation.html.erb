@@ -1,25 +1,39 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
 
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-      <%= link_to 'Admin', "#", class: 'navbar-brand', title: 'sub menu with admin stuff on it' %>
-      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'navbar-brand pull-right' %>
+  <%= link_to 'Home', root_path, class: 'navbar-brand' %>
 
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul>
-        <li>
-          logout
-        </li>
+</div>
+
+<div class="collapse navbar-collapse">
+  <ul class="pull-left nav navbar-nav">
+    <li>
+      <%= link_to "Admin", "", class: 'dropdown-toggle', 'data-toggle' => 'dropdown' %>
+      <ul class="dropdown-menu" role="menu">
+
+        <li> Messaging Center </li>
+        <li> Gallery Management</li>
       </ul>
-    </div>
-  </div>
-</nav>
+    </li>
+
+    <li> <%= link_to "Malibu Campers", users_path %> </li>
+    <li>
+      <%= link_to 'Gallery', "#", title: 'Picture Gallery' %>
+    </li>
+
+  </ul>
+  <ul class="pull-right nav navbar-nav">
+    <li>
+      <%= link_to "Hello #{current_user.name}", edit_user_path(current_user.id), title: 'modify user profile', class: "name_menu" %>
+    </li>
+    <li>
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+    </li>
+  </ul>
+
+</div>
