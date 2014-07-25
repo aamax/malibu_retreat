@@ -1,12 +1,17 @@
+<div ng-controller="UserCtrl">
+
 <h1>Malibu Campers List</h1>
 <% if !current_user.nil? && current_user.has_role?(:admin) %>
-	<%= link_to 'New User', new_user_path, class: 'btn btn-success btn-xs' %><br/>
+    <div class="col-md2">
+      <%= link_to 'New User', new_user_path, class: 'btn btn-success btn-xs' %>
+    </div>
+    <br/>
 <% end %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Name <input ng-model="camper_filter" class="search-query" placeholder="Filter"></th>
       <th>Email</th>
       <th>Address</th>
       <th>Phone</th>
@@ -15,35 +20,35 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td>
-          <%= user.street %> <br/>
-          <%= user.city %>
-          <% unless user.city.blank? && user.state.blank? %>
-              ,
-          <% end %>
+    <tr ng-repeat="user in users | filter:camper_filter | orderBy:'name'">
+      <td>{{user.name}}</td>
+      <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+      <td>
+        {{user.street}} <br/>
+        {{user.city}}
+        <span ng-hide="user.city == '' && user.state == ''">,</span>
 
-          <%= user.state %> <%= user.zip %>
-        </td>
-        <td>
-          Home: <%= user.home_phone %><br/>
-          Cell: <%= user.cell_phone %> <br/>
-          Fax: <%= user.fax %>
-        </td>
-        <td>
-		  <% if !current_user.nil? && current_user.has_role?(:admin) %>	
-	          <%= link_to 'Show', user, class: 'btn btn-primary btn-xs user_btn' %> <br/>
-	          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info btn-xs user_btn' %> <br/>
-	          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs user_btn' %> <br/>
-			  <%= "Last IN: #{user.last_sign_in_at}"%>
-		  <% end %>
-        </td>
-      </tr>
-    <% end %>
+
+        {{user.state}} {{user.zip}}
+      </td>
+      <td>
+        Home: {{user.home_phone}}<br/>
+        Cell: {{user.cell_phone}} <br/>
+        Fax: {{user.fax}}
+      </td>
+      <td>
+        <div ng-show="currentUserSeesButtons(user)">
+          <a href="{{user.id}}" ng-click="alert('show user')" class="btn btn-primary btn-xs user_btn">Show</a> <br/>
+          <a href="{{user.id}}" ng-click="alert('edit user')" class="btn btn-info btn-xs user_btn">Edit</a> <br/>
+
+          <div ng-show="currentUserisAdmin()">
+            <a href="{{user.id}}" ng-click="alert('destory user')" class="btn btn-danger btn-xs user_btn">Delete</a> <br/>
+            Last SignIn: {{user.lastSignInAt}}
+          </div>
+        </div>
+      </td>
+    </tr>
   </tbody>
 </table>
-
+</div>
 

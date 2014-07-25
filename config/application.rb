@@ -21,5 +21,6 @@ module MalibuRetreat
     # config.i18n.default_locale = :de
 
     config.serve_static_assets = true
+    config.time_zone = 'Mountain Time (US & Canada)'
   end
 end

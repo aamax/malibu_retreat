@@ -63,11 +63,22 @@ namespace :db_loader do
       user.save!
       puts "\nUser #{user.name} saved...\n\n"
       
-      if (user.email == 'aamax@xmission.com') || (user.email == 'judithsacco@sbcglobal.net') || 
-        (user.email == 'megaverett@gmail.com') || (user.email == 'caj@sti.net')
+      if (user.email == 'aamax@xmission.com') 
         user.add_role :admin
         puts "=========>  User #{user.name} set as admin user... **********"
       end
+      
+      if (user.email == 'aamax@xmission.com') || (user.email == 'judithsacco@sbcglobal.net') || 
+        (user.email == 'megaverett@gmail.com') || (user.email == 'caj@sti.net')
+        user.add_role :system
+        puts "=========>  User #{user.name} set as system user... **********"
+      end
+    end
+  
+    puts "\n\n\n**********************************************"
+    puts "Total Camper Count: #{User.length}"
+    for Role.all.each do |r|
+      puts "Number of #{r.name} Users: #{r.users.length}"
     end
   end
 end

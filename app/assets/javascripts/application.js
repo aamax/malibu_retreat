@@ -12,9 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require bootstrap
-//= require_tree .
+
+//= require angular.js
+//= require ng-rails-csrf
+//= require angular-resource.js
+//= require main
+//= require_tree ./angular
+
+// require_tree .
 
 $(function() {
     $('.flash_notice').delay(1000).fadeIn('normal', function() {

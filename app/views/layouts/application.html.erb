@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="malibuweb">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= content_for?(:title) ? yield(:title) : "Malibu Retreat" %></title>
@@ -27,7 +27,15 @@
       </nav>
   <% end %>
 
-  <%= yield %>
+  <div ng-view>
+
+    <input type="hidden" id="current_user_id" ng-model="currentUserId" value="<%= current_user.id %>"/>
+    <input type="hidden" id="current_user_name" ng-model="currentUserName" value="<%= current_user.name %>"/>
+    <input type="hidden" id="current_user_is_admin" ng-model="currentUserIsAdmin" value="<%= current_user.has_role? :admin %>"/>
+    <input type="hidden" id="current_user_roles" ng-model="currentUserRoles" value="<%= current_user.roles.map {|r| r.name }.join(',') %>"/>
+
+    <%= yield %>
+  </div>
 </div>
 
 <!-- optional footer -->

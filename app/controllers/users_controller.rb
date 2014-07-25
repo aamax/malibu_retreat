@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  require "json"
+
+  respond_to :html, :json, :js
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
@@ -6,6 +10,11 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+
+    respond_to do |format|
+      format.html { respond_with @users }
+      format.json { respond_with @users }
+    end
   end
 
   # GET /users/1
